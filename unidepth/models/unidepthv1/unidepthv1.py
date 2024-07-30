@@ -3,6 +3,10 @@ Author: Luigi Piccinelli
 Licensed under the CC-BY NC 4.0 license (http://creativecommons.org/licenses/by-nc/4.0/)
 """
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+
 import importlib
 from copy import deepcopy
 from math import ceil
@@ -14,13 +18,13 @@ import torchvision.transforms.functional as TF
 from einops import rearrange
 from huggingface_hub import PyTorchModelHubMixin
 
-from unidepth.models.unidepthv1.decoder import Decoder
-from unidepth.utils.constants import (IMAGENET_DATASET_MEAN,
+from .decoder import Decoder
+from ...utils.constants import (IMAGENET_DATASET_MEAN,
                                       IMAGENET_DATASET_STD)
-from unidepth.utils.distributed import is_main_process
-from unidepth.utils.geometric import (generate_rays,
+from ...utils.distributed import is_main_process
+from ...utils.geometric import (generate_rays,
                                       spherical_zbuffer_to_euclidean)
-from unidepth.utils.misc import get_params
+from ...utils.misc import get_params
 
 MAP_BACKBONES = {"ViTL14": "vitl14", "ConvNextL": "cnvnxtl"}
 

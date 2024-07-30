@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+
 import importlib
 import warnings
 from copy import deepcopy
@@ -10,13 +14,13 @@ import torchvision.transforms.functional as TF
 from einops import rearrange
 from huggingface_hub import PyTorchModelHubMixin
 
-from unidepth.models.unidepthv2.decoder import Decoder
-from unidepth.utils.constants import (IMAGENET_DATASET_MEAN,
+from .decoder import Decoder
+from ...utils.constants import (IMAGENET_DATASET_MEAN,
                                       IMAGENET_DATASET_STD)
-from unidepth.utils.distributed import is_main_process
-from unidepth.utils.geometric import (generate_rays,
+from ...utils.distributed import is_main_process
+from ...utils.geometric import (generate_rays,
                                       spherical_zbuffer_to_euclidean)
-from unidepth.utils.misc import (first_stack, last_stack, max_stack,
+from ...utils.misc import (first_stack, last_stack, max_stack,
                                  mean_stack, softmax_stack)
 
 STACKING_FNS = {

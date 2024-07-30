@@ -11,11 +11,11 @@ import torch.nn.functional as F
 from einops import rearrange
 from timm.models.layers import trunc_normal_
 
-from unidepth.layers import (MLP, AttentionBlock, ConvUpsample, NystromBlock,
+from ...layers import (MLP, AttentionBlock, ConvUpsample, NystromBlock,
                              PositionEmbeddingSine)
-from unidepth.utils.geometric import flat_interpolate, generate_rays
-from unidepth.utils.misc import max_stack
-from unidepth.utils.sht import rsh_cart_8
+from ...utils.geometric import flat_interpolate, generate_rays
+from ...utils.misc import max_stack
+from ...utils.sht import rsh_cart_8
 
 
 class ListAdapter(nn.Module):
